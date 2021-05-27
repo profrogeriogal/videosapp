@@ -13,11 +13,11 @@
     <ion-item-sliding *ngFor="let filme of listaVideos">
 
 
-    <ion-item lines="full">
+    <ion-item lines="full" (click)="exibirFilme(filme)">
       <ion-thumbnail slot="end">
         <img
            [src]="filme.cartaz"
-        />;
+        />
       </ion-thumbnail>
       <ion-label class="ion-text-wrap">
         <div>

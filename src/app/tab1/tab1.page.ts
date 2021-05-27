@@ -1,7 +1,9 @@
-import { IFilmes } from '../../../platforms/android/app/models/iFilme.model';
+import { IFilmes } from './../../../platforms/android/app/models/iFilme.model';
+import { DadosService } from './../services/dados.service';
 import { Component } from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -18,7 +20,8 @@ export class Tab1Page {
     duracao: '1h 50m',
     classificacao: 76,
     cartaz:'https://www.themoviedb.org/t/p/w220_and_h330_face/1RFKW55GHQShX07TdXFHvGFjZKI.jpg',
-    generos:['Ação', 'Fantasia','Aventura']
+    generos:['Ação', 'Fantasia','Aventura'],
+    pagina: '/olegado'
   },
 
 {
@@ -27,22 +30,25 @@ export class Tab1Page {
     duracao: '1h 45m',
     classificacao: 72,
     cartaz:'https://www.themoviedb.org/t/p/w220_and_h330_face/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg',
-    generos:['Ação', 'Fantasia','Aventura']
+    generos:['Ação', 'Fantasia','Aventura'],
+    pagina :'/flash'
   }
-,
-{
-  nome: 'Novo Filme ',
-  lancamento: '15/10/2021',
-  duracao: '1h 45m',
-  classificacao: 72,
-  cartaz:'https://www.themoviedb.org/t/p/w220_and_h330_face/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg',
-  generos:['Ação', 'Fantasia','Aventura']
-}
+
   ];
 
 
-  constructor(public alertController: AlertController,public toastController: ToastController) {}
-  async exibirAlertaFavorito() {
+  constructor(
+    public alertController: AlertController,
+    public toastController: ToastController,
+    public dadosService: DadosService,
+    public router: Router) {}
+
+    exibirFilme(filme: IFilmes){
+      this.dadosService.guardaDados('filme',filme);
+      this.router.navigateByUrl('/dados-filme');
+    }
+
+    async exibirAlertaFavorito() {
     const alert = await this.alertController.create({
       header: 'Alerta',
       message: 'Desejar realmente favoritar o filme?',
