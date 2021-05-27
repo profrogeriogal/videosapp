@@ -1,7 +1,7 @@
 <ion-header [translucent]="true" >
   <ion-toolbar color="dark">
     <ion-title>
-      VideosAPP
+      {{titulo}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,23 +10,29 @@
   <ion-searchbar placeholder="Buscar"></ion-searchbar>
 
   <ion-list>
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let filme of listaVideos">
 
 
     <ion-item lines="full">
       <ion-thumbnail slot="end">
-        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/1RFKW55GHQShX07TdXFHvGFjZKI.jpg">
+        <img
+           [src]="filme.cartaz"
+        />;
       </ion-thumbnail>
       <ion-label class="ion-text-wrap">
         <div>
-         <h1>O Legado de Júpiter </h1>
-         <p> 15/10/2021</p>
-         <p> Gênero do Filme</p>
+         <h1>{{filme.nome}} </h1>
+         <p> {{filme.lancamento}} - {{filme.duracao}}</p>
+         <p> {{filme.duracao}}</p>
+         <ion-badge color="light" *ngFor="let genero of filme.generos">
+           {{genero}}
+         </ion-badge>
+
        </div>
       </ion-label>
 
       <ion-chip color="laranja" outline>
-        <ion-label>76%</ion-label>
+        <ion-label>{{filme.classificacao}}%</ion-label>
       </ion-chip>
     </ion-item>
     <ion-item-options side="end">
@@ -37,24 +43,6 @@
   </ion-item-sliding>
 
   <ion-item-sliding>
-
-
-    <ion-item lines="full">
-      <ion-thumbnail slot="end">
-        <img src="https://www.themoviedb.org/t/p/w220_and_h330_face/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg">
-      </ion-thumbnail>
-      <ion-label class="ion-text-wrap">
-        <div>
-         <h1>Flash </h1>
-         <p> 15/10/2021</p>
-         <p> Ação</p>
-       </div>
-      </ion-label>
-
-      <ion-chip color="laranja" outline>
-        <ion-label>76%</ion-label>
-      </ion-chip>
-    </ion-item>
     <ion-item-options side="end">
       <ion-item-option color="laranja" (click)="exibirAlertaFavorito()" >
         <ion-icon slot="icon-only" name="star"></ion-icon>

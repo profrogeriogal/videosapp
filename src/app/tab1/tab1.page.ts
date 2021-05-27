@@ -1,3 +1,4 @@
+import { IFilmes } from '../../../platforms/android/app/models/iFilme.model';
 import { Component } from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
@@ -8,6 +9,37 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+
+  titulo ='Vídeo App';
+  listaVideos: IFilmes[] = [
+  {
+    nome: 'O Legado de Júpiter ',
+    lancamento: '15/10/2021',
+    duracao: '1h 50m',
+    classificacao: 76,
+    cartaz:'https://www.themoviedb.org/t/p/w220_and_h330_face/1RFKW55GHQShX07TdXFHvGFjZKI.jpg',
+    generos:['Ação', 'Fantasia','Aventura']
+  },
+
+{
+    nome: 'Flash ',
+    lancamento: '15/10/2021',
+    duracao: '1h 45m',
+    classificacao: 72,
+    cartaz:'https://www.themoviedb.org/t/p/w220_and_h330_face/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg',
+    generos:['Ação', 'Fantasia','Aventura']
+  }
+,
+{
+  nome: 'Novo Filme ',
+  lancamento: '15/10/2021',
+  duracao: '1h 45m',
+  classificacao: 72,
+  cartaz:'https://www.themoviedb.org/t/p/w220_and_h330_face/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg',
+  generos:['Ação', 'Fantasia','Aventura']
+}
+  ];
+
 
   constructor(public alertController: AlertController,public toastController: ToastController) {}
   async exibirAlertaFavorito() {
