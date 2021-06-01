@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { OlegadoPageRoutingModule } from './olegado-routing.module';
+import { LoginPageRoutingModule } from './login-routing.module';
 
-import { OlegadoPage } from './olegado.page';
+import { LoginPage } from './login.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    OlegadoPageRoutingModule
+    LoginPageRoutingModule
   ],
-  declarations: [OlegadoPage]
+  declarations: [LoginPage]
 })
-export class OlegadoPageModule {}
+export class LoginPageModule {}
