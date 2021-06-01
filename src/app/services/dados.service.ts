@@ -9,7 +9,7 @@ export class DadosService {
 
   constructor() { }
 
-  guardaDados( index: string, dados: any):boolean{
+  guardaDados( index: string, dados: any): boolean{
   if(index) {
       this.dados[index]=dados;
       return true;
